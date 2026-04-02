@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - BuniChitral</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">🏔️ BuniChitral</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="plans.html">Travel Plans</a></li>
+                <li id="dashboardLink"><a href="dashboard.html" class="active">Dashboard</a></li>
+                <li id="logoutBtn"><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container dashboard-container">
+        <div class="dashboard-sidebar">
+            <div class="user-profile">
+                <div class="user-avatar">👤</div>
+                <div id="userInfo">
+                    <h3>Loading...</h3>
+                    <p id="userEmail">email@example.com</p>
+                </div>
+            </div>
+
+            <nav class="sidebar-menu">
+                <button class="sidebar-btn active" onclick="switchTab('bookings')">📅 My Bookings</button>
+                <button class="sidebar-btn" onclick="switchTab('reviews')">⭐ My Reviews</button>
+                <button class="sidebar-btn" onclick="switchTab('profile')">⚙️ Profile Settings</button>
+                <button class="sidebar-btn" onclick="switchTab('help')">❓ Help</button>
+            </nav>
+        </div>
+
+        <div class="dashboard-content">
+            <!-- Bookings Tab -->
+            <div id="bookings" class="tab-content active">
+                <h2>My Bookings</h2>
+                <div class="bookings-filter">
+                    <button class="filter-btn active" onclick="filterBookings('all')">All</button>
+                    <button class="filter-btn" onclick="filterBookings('confirmed')">Confirmed</button>
+                    <button class="filter-btn" onclick="filterBookings('pending')">Pending</button>
+                    <button class="filter-btn" onclick="filterBookings('cancelled')">Cancelled</button>
+                </div>
+                <div id="bookingsList" class="bookings-list">
+                    <p>Loading your bookings...</p>
+                </div>
+            </div>
+
+            <!-- Reviews Tab -->
+            <div id="reviews" class="tab-content">
+                <h2>My Reviews</h2>
+                <div id="reviewsList" class="reviews-list">
+                    <p>Loading your reviews...</p>
+                </div>
+            </div>
+
+            <!-- Profile Settings Tab -->
+            <div id="profile" class="tab-content">
+                <h2>Profile Settings</h2>
+                <div class="profile-form">
+                    <div class="form-group">
+                        <label>Full Name</label>
+                        <input type="text" id="fullName" placeholder="Your name">
+                    </div>
+                    <div class="form-group">
+                        <label>Phone Number</label>
+                        <input type="tel" id="phone" placeholder="+92 (Pakistan)">
+                    </div>
+                    <div class="form-group">
+                        <label>Country</label>
+                        <select id="country">
+                            <option>Pakistan</option>
+                            <option>Afghanistan</option>
+                            <option>India</option>
+                            <option>Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Preferred Language</label>
+                        <select id="language">
+                            <option>English</option>
+                            <option>Urdu</option>
+                        </select>
+                    </div>
+                    <button onclick="saveProfile()" class="btn btn-primary">Save Changes</button>
+                </div>
+            </div>
+
+            <!-- Help Tab -->
+            <div id="help" class="tab-content">
+                <h2>Help & Support</h2>
+                <div class="help-section">
+                    <h3>❓ Frequently Asked Questions</h3>
+
+                    <div class="faq-item">
+                        <h4>How do I cancel a booking?</h4>
+                        <p>You can cancel any booking from your bookings list. Refunds are processed according to our cancellation policy (100% refund if cancelled 7+ days before, 50% for 3-7 days, no refund within 3 days).</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How do payments work?</h4>
+                        <p>We accept JazzCash (for Pakistan) and Stripe (international). You'll receive payment instructions after booking confirmation.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can I modify my booking?</h4>
+                        <p>Yes! Contact the guide through the booking details to discuss modifications. Changes may affect pricing.</p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>What if the guide cancels?</h4>
+                        <p>You'll receive a full refund immediately and will be offered alternative guides.</p>
+                    </div>
+                </div>
+
+                <div class="contact-section">
+                    <h3>📧 Contact Us</h3>
+                    <p>Email: <strong>info@bunichitral.com</strong></p>
+                    <p>WhatsApp: <strong>+92 (300) XXX-XXXX</strong></p>
+                    <p>We typically respond within 24 hours.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2026 BuniChitral. All rights reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/payments.js"></script>
+    <script src="js/reviews.js"></script>
+    <script src="js/dashboard.js"></script>
+</body>
+</html>
