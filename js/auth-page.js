@@ -43,11 +43,13 @@ function signupUser() {
     const name = document.getElementById('signupName').value;
     const email = document.getElementById('signupEmail').value;
     const password = document.getElementById('signupPassword').value;
-    const role = document.getElementById('signupRole').value;
     const phone = document.getElementById('signupPhone').value;
     const errorMsg = document.getElementById('signupError');
 
-    if (!name || !email || !password || !role) {
+    // Default role to "tourist" - only tourists can signup
+    const role = 'tourist';
+
+    if (!name || !email || !password) {
         errorMsg.textContent = 'Please fill in all required fields';
         return;
     }
@@ -67,14 +69,12 @@ function signupUser() {
                 email: email,
                 phone: phone,
                 role: role,
-                createdAt: new Date(),
-                rating: role === 'guide' ? 0 : null,
-                reviews: role === 'guide' ? 0 : null
+                createdAt: new Date()
             }).then(() => {
                 document.getElementById('signupError').textContent = '';
-                document.getElementById('authSuccess').textContent = 'Account created successfully! Redirecting...';
+                document.getElementById('authSuccess').textContent = '✅ Account created successfully! Redirecting...';
                 setTimeout(() => {
-                    window.location.href = role === 'guide' ? 'dashboard.html' : 'guides.html';
+                    window.location.href = 'guides.html';
                 }, 2000);
             });
         })

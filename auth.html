@@ -37,15 +37,10 @@
 
             <!-- Signup Form -->
             <form id="signupForm" class="auth-form">
-                <h2>Create Account</h2>
+                <h2>Create Tourist Account</h2>
                 <input type="text" id="signupName" placeholder="Full Name" required>
                 <input type="email" id="signupEmail" placeholder="Email" required>
                 <input type="password" id="signupPassword" placeholder="Password (min 6 chars)" required>
-                <select id="signupRole" required>
-                    <option value="">Select Role</option>
-                    <option value="tourist">Tourist</option>
-                    <option value="guide">Travel Guide</option>
-                </select>
                 <input type="tel" id="signupPhone" placeholder="Phone Number">
                 <button type="button" class="btn btn-primary" onclick="signupUser()">Create Account</button>
                 <p id="signupError" class="error-message"></p>
