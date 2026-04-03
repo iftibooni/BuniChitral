@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment - BuniChitral</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/payment.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">🏔️ BuniChitral</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="guides.html">Guides</a></li>
+                <li><a href="plans.html">Travel Plans</a></li>
+                <li id="dashboardLink" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="container payment-container">
+        <div class="payment-wrapper">
+            <div class="payment-steps">
+                <div class="step active" id="step1">1. Select Method</div>
+                <div class="step" id="step2">2. Complete Payment</div>
+                <div class="step" id="step3">3. Confirm</div>
+            </div>
+
+            <!-- Step 1: Payment Method Selection -->
+            <div id="methodSelection" class="payment-section active">
+                <h2>Choose Payment Method</h2>
+                <div class="payment-methods">
+                    <div class="method-card jazzcash-method active" onclick="selectPaymentMethod('jazzcash')">
+                        <div class="method-icon">📱</div>
+                        <h3>JazzCash</h3>
+                        <p>Recommended for Pakistan</p>
+                    </div>
+                    <div class="method-card "  onclick="selectPaymentMethod('manual')">
+                        <div class="method-icon">🏦</div>
+                        <h3>Bank Transfer</h3>
+                        <p>Direct account transfer</p>
+                    </div>
+                </div>
+                <button onclick="proceedToPayment()" class="btn btn-primary btn-large">Proceed to Payment</button>
+            </div>
+
+            <!-- Step 2: JazzCash Payment Gateway -->
+            <div id="jazzcashPayment" class="payment-section" style="display: none;">
+                <h2>💳 JazzCash Payment</h2>
+
+                <!-- Booking Summary -->
+                <div class="booking-summary">
+                    <div class="summary-header">
+                        <h3 id="guideName">Guide Name</h3>
+                        <p id="tripDates">Trip Dates</p>
+                    </div>
+                    <div class="price-breakdown">
+                        <div class="breakdown-row">
+                            <span>Guide Fee:</span>
+                            <span id="guideFee">Rs. 0</span>
+                        </div>
+                        <div class="breakdown-row">
+                            <span>Service Fee (5%):</span>
+                            <span id="serviceFee">Rs. 0</span>
+                        </div>
+                        <div class="breakdown-row total">
+                            <span>Total Amount:</span>
+                            <span id="totalAmount">Rs. 0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- QR Code Section -->
+                <div class="payment-instructions">
+                    <h3>📲 Payment Instructions</h3>
+                    <p class="instruction-text">Scan the QR code below using JazzCash app to send payment:</p>
+
+                    <div class="qr-container">
+                        <div id="qrcode"></div>
+                    </div>
+
+                    <!-- Account Details -->
+                    <div class="account-details">
+                        <h4>Or send manually to:</h4>
+                        <div class="detail-box">
+                            <div class="detail-row">
+                                <span class="label">Account Name:</span>
+                                <span class="value" id="accountName">BuniChitral Services</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Phone Number:</span>
+                                <span class="value" id="accountPhone">+92 300-XXXXX</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Amount:</span>
+                                <span class="value amount" id="paymentAmount">Rs. 0</span>
+                            </div>
+                            <div class="detail-row">
+                                <span class="label">Reference:</span>
+                                <span class="value" id="bookingRef">BuniChitral-XXXX</span>
+                            </div>
+                        </div>
+                        <p class="info-text">⚠️ Please use the reference number in your payment note. This helps us confirm your payment quickly.</p>
+                    </div>
+
+                    <!-- Payment Confirmation -->
+                    <div class="payment-confirmation">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="paymentConfirm" onchange="toggleConfirmButton()">
+                            <span>I have sent the payment from my JazzCash account</span>
+                        </label>
+                    </div>
+
+                    <!-- Action Buttons -->
+                    <div class="payment-actions">
+                        <button onclick="goBackToMethod()" class="btn btn-secondary">Back</button>
+                        <button id="confirmPaymentBtn" onclick="completePayment()" class="btn btn-primary" disabled>
+                            Confirm Payment
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Step 3: Payment Complete -->
+            <div id="paymentComplete" class="payment-section" style="display: none;">
+                <div class="success-message">
+                    <div class="success-icon">✅</div>
+                    <h2>Payment Confirmed!</h2>
+                    <p>Your booking has been confirmed.</p>
+
+                    <div class="confirmation-details">
+                        <div class="detail-item">
+                            <span class="label">Booking ID:</span>
+                            <span class="value" id="confirmBookingId">-</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Status:</span>
+                            <span class="value status-confirmed">✅ Confirmed</span>
+                        </div>
+                        <div class="detail-item">
+                            <span class="label">Amount Paid:</span>
+                            <span class="value" id="confirmAmount">-</span>
+                        </div>
+                    </div>
+
+                    <div class="next-steps">
+                        <h4>Next Steps:</h4>
+                        <ul>
+                            <li>📧 Confirmation email will be sent shortly</li>
+                            <li>📱 Check your Dashboard for booking details</li>
+                            <li>📞 Connect with your guide before the trip</li>
+                        </ul>
+                    </div>
+
+                    <button onclick="goToDashboard()" class="btn btn-primary btn-large">
+                        Go to Dashboard
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 BuniChitral. All rights reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/payment-gateway.js"></script>
+</body>
+</html>

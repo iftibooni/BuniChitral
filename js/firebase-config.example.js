@@ -21,5 +21,13 @@ const auth = firebase.auth();
 // Initialize Firestore
 const db = firebase.firestore();
 
-// Initialize Storage
-const storage = firebase.storage();
+// Initialize Storage (optional - only available if storage SDK is loaded)
+let storage = null;
+try {
+    if (firebase.storage) {
+        storage = firebase.storage();
+    }
+} catch (e) {
+    // Storage isn't used in all pages; avoid breaking auth/signup.
+    storage = null;
+}

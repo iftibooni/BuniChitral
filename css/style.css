@@ -380,6 +380,31 @@ body {
     display: block;
 }
 
+.auth-divider {
+    position: relative;
+    text-align: center;
+    margin: 1.25rem 0;
+    color: #666;
+    font-size: 0.95rem;
+}
+
+.auth-divider:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 50%;
+    height: 1px;
+    background: var(--border-color);
+    transform: translateY(-50%);
+}
+
+.auth-divider span {
+    position: relative;
+    background: #fff;
+    padding: 0 10px;
+}
+
 /* Dashboard */
 .dashboard-section {
     padding: 3rem 0;
