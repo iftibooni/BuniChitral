@@ -1,5 +1,19 @@
 console.log('✅ auth-page.js loaded successfully');
 
+function formatAuthError(error) {
+    if (!error) return 'Unknown error';
+    if (error === 'Not a tourist account') return error;
+    if (error.code === 'auth/unauthorized-domain') {
+        return (
+            'This domain is not authorized for Google sign-in. In the Firebase Console, go to ' +
+            'Authentication → Settings → Authorized domains, and add: ' +
+            window.location.hostname +
+            ' (and localhost if you test locally).'
+        );
+    }
+    return error.message || String(error);
+}
+
 function switchTab(tab) {
     console.log('📌 Switching to tab:', tab);
     const loginForm = document.getElementById('loginForm');
@@ -20,7 +34,6 @@ function switchTab(tab) {
 }
 
 function loginUser() {
-    // If Firebase init fails, make the problem visible in the UI.
     if (typeof auth === 'undefined' || typeof db === 'undefined') {
         const errorMsg = document.getElementById('loginError');
         errorMsg.textContent = 'Firebase not initialized. Please reload the page and check console errors.';
@@ -38,16 +51,14 @@ function loginUser() {
 
     auth.signInWithEmailAndPassword(email, password)
         .then(userCredential => {
-            // Verify user is a tourist
             checkUserRole(userCredential.user.uid);
         })
         .catch(error => {
-            errorMsg.textContent = 'Error: ' + error.message;
+            errorMsg.textContent = 'Error: ' + formatAuthError(error);
         });
 }
 
 function loginWithGoogle() {
-    // If Firebase init fails, make the problem visible in the UI.
     if (typeof auth === 'undefined' || typeof db === 'undefined') {
         const errorMsg = document.getElementById('loginError');
         errorMsg.textContent = 'Firebase not initialized. Please reload the page and check console errors.';
@@ -65,12 +76,11 @@ function loginWithGoogle() {
         })
         .catch(error => {
             console.error('❌ Google sign-in error:', error);
-            errorMsg.textContent = 'Error: ' + (error.message || error);
+            errorMsg.textContent = 'Error: ' + formatAuthError(error);
         });
 }
 
 function signupWithGoogle() {
-    // If Firebase init fails, make the problem visible in the UI.
     if (typeof auth === 'undefined' || typeof db === 'undefined') {
         const errorMsg = document.getElementById('signupError');
         errorMsg.textContent = 'Firebase not initialized. Please reload the page and check console errors.';
@@ -88,10 +98,8 @@ function signupWithGoogle() {
             const user = result.user;
             console.log('✅ Google login successful:', user.email);
 
-            // Check if user already exists
             return db.collection('users').doc(user.uid).get().then(doc => {
                 if (!doc.exists) {
-                    // Create new tourist user
                     console.log('Creating new tourist user...');
                     return db.collection('users').doc(user.uid).set({
                         name: user.displayName,
@@ -102,7 +110,6 @@ function signupWithGoogle() {
                         createdAt: firebase.firestore.FieldValue.serverTimestamp()
                     });
                 } else if (doc.data().role !== 'tourist') {
-                    // User exists but is not a tourist
                     auth.signOut();
                     errorMsg.textContent = 'This account is not registered as a tourist. Please contact admin.';
                     return Promise.reject('Not a tourist account');
@@ -118,15 +125,13 @@ function signupWithGoogle() {
         .catch(error => {
             console.error('❌ Google sign-in error:', error);
             if (error === 'Not a tourist account') {
-                // Error already set above
-            } else {
-                errorMsg.textContent = 'Error: ' + (error.message || error);
+                return;
             }
+            errorMsg.textContent = 'Error: ' + formatAuthError(error);
         });
 }
 
 function signupWithEmail() {
-    // If Firebase init fails, make the problem visible in the UI.
     if (typeof auth === 'undefined' || typeof db === 'undefined') {
         const errorMsg = document.getElementById('signupError');
         errorMsg.textContent = 'Firebase not initialized. Please reload the page and check console errors.';
@@ -166,7 +171,7 @@ function signupWithEmail() {
         })
         .catch(error => {
             console.error('❌ Email sign-up error:', error);
-            errorMsg.textContent = 'Error: ' + (error.message || error);
+            errorMsg.textContent = 'Error: ' + formatAuthError(error);
         });
 }
 
@@ -175,18 +180,15 @@ function checkUserRole(userId) {
         if (doc.exists) {
             const userRole = doc.data().role;
             if (userRole === 'tourist') {
-                // Tourist - allow login
                 localStorage.setItem('userData', JSON.stringify(doc.data()));
                 setTimeout(() => {
                     window.location.href = 'dashboard.html';
                 }, 1000);
             } else {
-                // Not a tourist
                 auth.signOut();
                 document.getElementById('loginError').textContent = 'This account is not a tourist account. Please contact admin.';
             }
         } else {
-            // User doesn't exist
             document.getElementById('loginError').textContent = 'User profile not found.';
         }
     });
@@ -200,10 +202,20 @@ function loadUserData(userId) {
     });
 }
 
-// Ensure inline onclick handlers can always find these functions.
-// (Some browsers can shadow globals via element ids/names, so this makes it explicit.)
-window.switchTab = switchTab;
-window.loginUser = loginUser;
-window.loginWithGoogle = loginWithGoogle;
-window.signupWithGoogle = signupWithGoogle;
-window.signupWithEmail = signupWithEmail;
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.tab-btn[data-tab]').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            switchTab(this.getAttribute('data-tab'));
+        });
+    });
+
+    const btnLogin = document.getElementById('btnLogin');
+    const btnLoginGoogle = document.getElementById('btnLoginGoogle');
+    const btnSignupGoogle = document.getElementById('btnSignupGoogle');
+    const btnSignupEmail = document.getElementById('btnSignupEmail');
+
+    if (btnLogin) btnLogin.addEventListener('click', loginUser);
+    if (btnLoginGoogle) btnLoginGoogle.addEventListener('click', loginWithGoogle);
+    if (btnSignupGoogle) btnSignupGoogle.addEventListener('click', signupWithGoogle);
+    if (btnSignupEmail) btnSignupEmail.addEventListener('click', signupWithEmail);
+});
