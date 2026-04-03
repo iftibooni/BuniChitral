@@ -65,25 +65,45 @@ function submitBooking() {
         return;
     }
 
+    const endDate = new Date(startDate);
+    endDate.setDate(endDate.getDate() + days);
+
+    const totalAmount = days * dailyRate;
+
     const booking = {
         guideId: selectedGuide.id,
         userId: currentUser.uid,
+        userEmail: currentUser.email,
         guideName: selectedGuide.name,
-        date: new Date(startDate),
-        days: days,
+        startDate: firebase.firestore.Timestamp.fromDate(new Date(startDate)),
+        endDate: firebase.firestore.Timestamp.fromDate(endDate),
+        numberOfPeople: 1,
+        totalAmount: totalAmount,
+        currency: 'PKR',
         specialRequests: specialRequests,
-        totalPrice: days * dailyRate,
-        status: 'pending',
-        createdAt: new Date()
+        paymentStatus: 'pending',
+        bookingStatus: 'pending_payment',
+        paymentMethod: null,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp()
     };
 
+    // Show loading state
+    const submitBtn = event.target;
+    const originalText = submitBtn.textContent;
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Creating booking...';
+
     db.collection('bookings').add(booking)
-        .then(() => {
-            alert('Booking confirmed! Check your dashboard for details.');
-            window.location.href = 'dashboard.html';
+        .then((docRef) => {
+            console.log('✅ Booking created:', docRef.id);
+            alert('Booking created! Proceeding to payment...');
+            // Redirect to payment page
+            window.location.href = `payment-confirmation.html?booking=${docRef.id}`;
         })
         .catch(error => {
             console.error('Error creating booking:', error);
             errorMsg.textContent = 'Error creating booking. Please try again.';
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
         });
 }

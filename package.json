@@ -1,0 +1,15 @@
+{
+  "name": "bunichitral",
+  "version": "1.0.0",
+  "description": "Book local travel guides in Chitral",
+  "main": "seed.js",
+  "scripts": {
+    "seed": "node seed.js"
+  },
+  "keywords": ["chitral", "travel", "guides", "booking"],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "firebase-admin": "^12.0.0"
+  }
+}
