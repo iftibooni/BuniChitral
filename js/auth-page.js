@@ -120,7 +120,7 @@ function signupWithGoogle() {
                 document.getElementById('signupError').textContent = '';
                 document.getElementById('authSuccess').textContent = '✅ Sign up successful! Redirecting...';
                 setTimeout(() => {
-                    window.location.href = 'guides.html';
+                    window.location.href = 'destinations.html';
                 }, 2000);
             });
         })
@@ -168,7 +168,7 @@ function signupWithEmail() {
             document.getElementById('signupError').textContent = '';
             document.getElementById('authSuccess').textContent = '✅ Sign up successful! Redirecting...';
             setTimeout(() => {
-                window.location.href = 'guides.html';
+                window.location.href = 'destinations.html';
             }, 2000);
         })
         .catch(error => {

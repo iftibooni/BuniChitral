@@ -10,7 +10,7 @@ function loadBookingPage() {
     const guideId = params.get('guide');
 
     if (!guideId) {
-        document.getElementById('bookingDetails').innerHTML = '<p>Error: No guide selected. <a href="guides.html">Go back to guides</a></p>';
+        document.getElementById('bookingDetails').innerHTML = '<p>Error: No guide selected. Try <a href="plans.html">Travel Plans</a> or <a href="destinations.html">Chitral Destinations</a>.</p>';
         return;
     }
 

@@ -2,66 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Browse Guides - BuniChitral</title>
-    <link rel="stylesheet" href="css/style.css">
+    <meta http-equiv="refresh" content="0; url=destinations.html">
+    <title>Redirecting…</title>
+    <script>window.location.replace('destinations.html');</script>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="container">
-            <div class="nav-brand">🏔️ BuniChitral</div>
-            <ul class="nav-menu">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="guides.html" class="active">Guides</a></li>
-                <li><a href="plans.html">Travel Plans</a></li>
-                <li id="authLink"><a href="auth.html">Login</a></li>
-                <li id="dashboardLink" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
-                <li id="logoutBtn" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <section class="page-header">
-        <h1>Our Local Travel Guides</h1>
-        <p>Choose from our pool of experienced local guides</p>
-    </section>
-
-    <section class="guides-section container">
-        <div class="filters">
-            <input type="text" id="searchInput" placeholder="Search guides...">
-            <select id="experienceFilter">
-                <option value="">All Experience Levels</option>
-                <option value="beginner">Beginner</option>
-                <option value="intermediate">Intermediate</option>
-                <option value="expert">Expert</option>
-            </select>
-        </div>
-
-        <div id="guidesList" class="guides-grid">
-            <!-- Guides will be loaded here -->
-            <p>Loading guides...</p>
-        </div>
-    </section>
-
-    <!-- Guide Detail Modal -->
-    <div id="guideModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="closeModal()">&times;</span>
-            <div id="guideDetail"></div>
-            <button class="btn btn-primary" onclick="bookGuide()">Book This Guide</button>
-        </div>
-    </div>
-
-    <footer class="footer">
-        <p>&copy; 2026 BuniChitral. All rights reserved.</p>
-    </footer>
-
-    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore-compat.js"></script>
-    <script src="js/firebase-config.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/navbar.js"></script>
-    <script src="js/guides.js"></script>
+    <p>Redirecting to <a href="destinations.html">Chitral Destinations</a>…</p>
 </body>
 </html>

@@ -20,7 +20,7 @@ function initializePaymentPage() {
 
     if (!bookingId) {
         alert("Error: No booking found. Please go back and try again.");
-        window.location.href = 'guides.html';
+        window.location.href = 'destinations.html';
         return;
     }
 
@@ -40,7 +40,7 @@ async function loadBookingDetails(bookingId) {
 
         if (!bookingDoc.exists) {
             alert("Booking not found!");
-            window.location.href = 'guides.html';
+            window.location.href = 'destinations.html';
             return;
         }
 
@@ -60,7 +60,7 @@ async function loadBookingDetails(bookingId) {
     } catch (error) {
         console.error("Error loading booking:", error);
         alert("Error loading booking details: " + error.message);
-        window.location.href = 'guides.html';
+        window.location.href = 'destinations.html';
     }
 }
 

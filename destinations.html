@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Travel Plans - BuniChitral</title>
+    <title>Chitral Destinations - BuniChitral</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -12,8 +12,8 @@
             <div class="nav-brand">🏔️ BuniChitral</div>
             <ul class="nav-menu">
                 <li><a href="index.html">Home</a></li>
-                <li><a href="destinations.html">Chitral Destinations</a></li>
-                <li><a href="plans.html" class="active">Travel Plans</a></li>
+                <li><a href="destinations.html" class="active">Chitral Destinations</a></li>
+                <li><a href="plans.html">Travel Plans</a></li>
                 <li id="authLink"><a href="auth.html">Login</a></li>
                 <li id="dashboardLink" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
                 <li id="logoutBtn" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
@@ -22,27 +22,22 @@
     </nav>
 
     <section class="page-header">
-        <h1>Travel Plans & Packages</h1>
-        <p>Choose from curated travel experiences in Chitral</p>
+        <h1>Chitral Destinations</h1>
+        <p>Explore iconic valleys, passes, and towns — each with photos and a video introduction</p>
     </section>
 
-    <section class="plans-section container">
-        <div id="plansList" class="plans-grid">
-            <!-- Plans will be loaded here -->
-            <p>Loading travel plans...</p>
+    <section class="destinations-section container">
+        <div class="filters">
+            <input type="text" id="destinationSearch" placeholder="Search destinations…">
         </div>
+
+        <div id="destinationsList" class="destinations-grid"></div>
     </section>
 
-    <!-- Plan Detail Modal -->
-    <div id="planModal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <span class="close" onclick="closePlanModal()">&times;</span>
-            <div id="planDetail"></div>
-            <div class="plan-booking">
-                <input type="date" id="planDate" required>
-                <input type="number" id="planParticipants" min="1" max="20" value="1" placeholder="Number of people">
-                <button class="btn btn-primary" onclick="bookPlan()">Book This Plan</button>
-            </div>
+    <div id="destinationModal" class="modal" style="display: none;">
+        <div class="modal-content modal-content--destination">
+            <span class="close" onclick="closeDestinationModal()">&times;</span>
+            <div id="destinationDetail"></div>
         </div>
     </div>
 
@@ -56,6 +51,6 @@
     <script src="js/firebase-config.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/plans.js"></script>
+    <script src="js/destinations.js"></script>
 </body>
 </html>

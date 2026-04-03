@@ -123,7 +123,7 @@ async function displayBookings() {
             container.innerHTML = `
                 <div class="empty-state">
                     <p>No bookings yet</p>
-                    <a href="guides.html" class="btn btn-primary">Browse Guides</a>
+                    <a href="destinations.html" class="btn btn-primary">Chitral Destinations</a>
                     <a href="plans.html" class="btn btn-secondary">View Plans</a>
                 </div>
             `;
@@ -225,7 +225,7 @@ async function displayUserReviews() {
             container.innerHTML = `
                 <div class="empty-state">
                     <p>You haven't left any reviews yet</p>
-                    <a href="guides.html" class="btn btn-primary">Browse and Review Guides</a>
+                    <a href="destinations.html" class="btn btn-primary">Chitral Destinations & reviews</a>
                 </div>
             `;
             return;
