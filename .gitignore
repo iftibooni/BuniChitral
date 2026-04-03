@@ -1,3 +1,6 @@
+# Secrets (never commit service accounts)
+firebase-key.json
+
 # Dependencies
 node_modules/
 package-lock.json
