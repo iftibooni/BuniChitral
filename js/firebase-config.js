@@ -1,15 +1,13 @@
-// Firebase Configuration Template
-// IMPORTANT: Update these values with your Firebase project credentials
-// Get these from: https://console.firebase.google.com/
-// DO NOT commit this file with real credentials to GitHub!
+// Firebase client (web) config. The API key here is not a secret for browser apps—
+// restrict abuse in Firebase Console (Authorized domains, App Check) and Firestore rules.
 
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY_HERE",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyDsYLR4BQUqiYveOlkfAtJKXnBI__WI44g",
+    authDomain: "bunichitral-e3e0a.firebaseapp.com",
+    projectId: "bunichitral-e3e0a",
+    storageBucket: "bunichitral-e3e0a.firebasestorage.app",
+    messagingSenderId: "379587297552",
+    appId: "1:379587297552:web:73c0b6e119ef16ab106595"
 };
 
 // Initialize Firebase
