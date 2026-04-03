@@ -6,13 +6,13 @@ const DESTINATIONS = [
     {
         id: 'booni',
         name: 'Booni',
-        summary: ' Booni, often called the golden heart of Upper Chitral, is a breathtaking alpine valley set against the dramatic backdrop of the Hindu Kush mountains. Serving as the administrative center of the region, it sits on a natural terrace where lush green orchards meet towering, snow-covered peaks, creating a striking and unforgettable landscape.Nature defines life in Booni. The expansive Qaqlasht Meadow hosts vibrant cultural festivals each spring, filled with music and traditional polo, while nearby highlands like Shupeshun offer peaceful trekking routes surrounded by wildflowers and untouched beauty. The valley’s charm is further enriched by its reputation as a fruit haven, with apples, apricots, and grapes growing abundantly along its winding paths.Beyond its scenic appeal, Booni is a gateway to adventure. Travelers can explore routes leading to the remote Broghil Valley and beyond. The local Khowar-speaking community welcomes visitors with warmth and rich cultural traditions. Whether you seek photography, cultural experiences, or pure tranquility, Booni offers a rare escape into nature’s calm, where every moment feels timeless and every visitor feels at home.       ',
-        heroImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80',
+        summary: ' Booni, the heart of Upper Chitral, is a stunning alpine valley set against the Hindu Kush. Perched on a natural terrace, it blends lush orchards with snow-capped peaks. Qaqlasht Meadow hosts vibrant spring festivals, while nearby trails offer serene trekking experiences. Known for its apples and apricots, Booni is rich in natural abundance. It also serves as a gateway to Broghil Valley. With warm hospitality and peaceful surroundings, Booni offers travelers culture, adventure, and tranquility in one unforgettable destination ',
+        heroImage: 'https://instagram.fpew4-1.fna.fbcdn.net/v/t51.2885-19/92827217_235923424458421_6864381010671304704_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpew4-1.fna.fbcdn.net&_nc_cat=101&_nc_oc=Q6cZ2gFCuB7yjd-sMeRpHnjUQDvDUxFShoWWbHougyHjr0tFz3E38fX8e0bnTUpya-P0mXW&_nc_ohc=DJPIXJ34sW8Q7kNvwGhpN6-&_nc_gid=shLZBimMgUW_xYi6_UIuvw&edm=APoiHPcBAAAA&ccb=7-5&oh=00_Af1RlFGirRemxFRh6QRpebuN-LhVj8FmQTIfxQXMB4VwvQ&oe=69D5EE08&_nc_sid=22de04',
         gallery: [
-            'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=80',
+            'https://instagram.fpew4-1.fna.fbcdn.net/v/t51.2885-19/92827217_235923424458421_6864381010671304704_n.jpg?efg=eyJ2ZW5jb2RlX3RhZyI6InByb2ZpbGVfcGljLmRqYW5nby4xMDgwLmMyIn0&_nc_ht=instagram.fpew4-1.fna.fbcdn.net&_nc_cat=101&_nc_oc=Q6cZ2gFCuB7yjd-sMeRpHnjUQDvDUxFShoWWbHougyHjr0tFz3E38fX8e0bnTUpya-P0mXW&_nc_ohc=DJPIXJ34sW8Q7kNvwGhpN6-&_nc_gid=shLZBimMgUW_xYi6_UIuvw&edm=APoiHPcBAAAA&ccb=7-5&oh=0a0_Af1RlFGirRemxFRh6QRpebuN-LhVj8FmQTIfxQXMB4VwvQ&oe=69D5EE08&_nc_sid=22de04',
             'https://picsum.photos/seed/booni-a/800/500'
         ],
-        videoSrc: 'https://www.instagram.com/bunichitral/reel/DQO3yauDRqb/',
+        videoSrc: 'https://www.instagram.com/iftibuni/reel/DWqrnjRjcy4/',
         videoCaption: 'Sample video placeholder — swap for your Booni footage.'
     },
     {
