@@ -5,10 +5,12 @@ function formatAuthError(error) {
     if (error === 'Not a tourist account') return error;
     if (error.code === 'auth/unauthorized-domain') {
         return (
-            'This domain is not authorized for Google sign-in. In the Firebase Console, go to ' +
-            'Authentication → Settings → Authorized domains, and add: ' +
+            'Google sign-in is blocked on this hostname. In Firebase Console open Authentication, ' +
+            'click the Settings tab (not Sign-in method), scroll to Authorized domains, Add domain, ' +
+            'and add exactly: ' +
             window.location.hostname +
-            ' (and localhost if you test locally).'
+            '. Default entries like "*.firebaseapp.com" do not cover GitHub Pages; you must add your ' +
+            'github.io (or custom) host. Then wait a minute and refresh.'
         );
     }
     return error.message || String(error);
