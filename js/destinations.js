@@ -6,13 +6,13 @@ const DESTINATIONS = [
     {
         id: 'booni',
         name: 'Booni',
-        summary: 'Main town of Upper Chitral and a hub for treks, schools, and mountain views toward the Afghan frontier.',
+        summary: ' Booni, often called the golden heart of Upper Chitral, is a breathtaking alpine valley set against the dramatic backdrop of the Hindu Kush mountains. Serving as the administrative center of the region, it sits on a natural terrace where lush green orchards meet towering, snow-covered peaks, creating a striking and unforgettable landscape.Nature defines life in Booni. The expansive Qaqlasht Meadow hosts vibrant cultural festivals each spring, filled with music and traditional polo, while nearby highlands like Shupeshun offer peaceful trekking routes surrounded by wildflowers and untouched beauty. The valley’s charm is further enriched by its reputation as a fruit haven, with apples, apricots, and grapes growing abundantly along its winding paths.Beyond its scenic appeal, Booni is a gateway to adventure. Travelers can explore routes leading to the remote Broghil Valley and beyond. The local Khowar-speaking community welcomes visitors with warmth and rich cultural traditions. Whether you seek photography, cultural experiences, or pure tranquility, Booni offers a rare escape into nature’s calm, where every moment feels timeless and every visitor feels at home.       ',
         heroImage: 'https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?w=1200&auto=format&fit=crop&q=80',
         gallery: [
             'https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=800&auto=format&fit=crop&q=80',
             'https://picsum.photos/seed/booni-a/800/500'
         ],
-        videoSrc: 'https://storage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4',
+        videoSrc: 'https://www.instagram.com/bunichitral/reel/DQO3yauDRqb/',
         videoCaption: 'Sample video placeholder — swap for your Booni footage.'
     },
     {
