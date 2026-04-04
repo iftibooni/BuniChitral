@@ -1,0 +1,55 @@
+{
+  "booni": {
+    "folder": "Booni",
+    "images": [
+      "Visuals/Booni/Photos/0.JPG",
+      "Visuals/Booni/Photos/1.JPG",
+      "Visuals/Booni/Photos/2.JPG",
+      "Visuals/Booni/Photos/3.JPG",
+      "Visuals/Booni/Photos/4.JPG",
+      "Visuals/Booni/Photos/5.JPG",
+      "Visuals/Booni/Photos/6.JPG",
+      "Visuals/Booni/Photos/7.JPG"
+    ],
+    "videos": [
+      "Visuals/Booni/Videos/1.MP4"
+    ],
+    "textFile": "Visuals/Booni/text.txt"
+  },
+  "broghil": {
+    "folder": "Broghil Valley",
+    "images": [],
+    "videos": [],
+    "textFile": "Visuals/Broghil Valley/text.txt"
+  },
+  "garam-chashma": {
+    "folder": "Garam Chashma",
+    "images": [],
+    "videos": [],
+    "textFile": "Visuals/Garam Chashma/text.txt"
+  },
+  "gobor": {
+    "folder": "Gobor Valley",
+    "images": [],
+    "videos": [],
+    "textFile": "Visuals/Gobor Valley/text.txt"
+  },
+  "kalash": {
+    "folder": "Kalash Valley",
+    "images": [],
+    "videos": [],
+    "textFile": "Visuals/Kalash Valley/text.txt"
+  },
+  "madaklasht": {
+    "folder": "Madaklasht",
+    "images": [],
+    "videos": [],
+    "textFile": "Visuals/Madaklasht/text.txt"
+  },
+  "shandur": {
+    "folder": "Shandur Pass",
+    "images": [],
+    "videos": [],
+    "textFile": "Visuals/Shandur Pass/text.txt"
+  }
+}

@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Detail-page flow (no modal). If you still see a popup, this HTML is not the one being served. -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Chitral Destinations - BuniChitral</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9B%B0%3C/text%3E%3C/svg%3E">
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
@@ -23,7 +25,7 @@
 
     <section class="page-header">
         <h1>Chitral Destinations</h1>
-        <p>Explore iconic valleys, passes, and towns — each with photos and a video introduction</p>
+        <p>Explore iconic valleys, passes, and towns — open a place for photos, videos, and local notes</p>
     </section>
 
     <section class="destinations-section container">
@@ -33,13 +35,6 @@
 
         <div id="destinationsList" class="destinations-grid"></div>
     </section>
-
-    <div id="destinationModal" class="modal" style="display: none;">
-        <div class="modal-content modal-content--destination">
-            <span class="close" onclick="closeDestinationModal()">&times;</span>
-            <div id="destinationDetail"></div>
-        </div>
-    </div>
 
     <footer class="footer">
         <p>&copy; 2026 BuniChitral. All rights reserved.</p>
@@ -51,6 +46,7 @@
     <script src="js/firebase-config.js"></script>
     <script src="js/auth.js"></script>
     <script src="js/navbar.js"></script>
-    <script src="js/destinations.js"></script>
+    <script src="js/chitral-destinations-data.js"></script>
+    <script src="js/chitral-destinations-grid.js"></script>
 </body>
 </html>

@@ -4,7 +4,8 @@
   "description": "Book local travel guides in Chitral",
   "main": "seed.js",
   "scripts": {
-    "seed": "node seed.js"
+    "seed": "node seed.js",
+    "build:visuals": "node scripts/build-visuals-manifest.js"
   },
   "keywords": ["chitral", "travel", "guides", "booking"],
   "author": "",

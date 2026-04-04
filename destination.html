@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- destination.html + chitral-destination-detail.js -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Destination — BuniChitral</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ctext y='26' font-size='26'%3E%E2%9B%B0%3C/text%3E%3C/svg%3E">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">🏔️ BuniChitral</div>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destinations.html">Chitral Destinations</a></li>
+                <li><a href="plans.html">Travel Plans</a></li>
+                <li id="authLink"><a href="auth.html">Login</a></li>
+                <li id="dashboardLink" style="display: none;"><a href="dashboard.html">Dashboard</a></li>
+                <li id="logoutBtn" style="display: none;"><a href="#" onclick="logout()">Logout</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section class="destination-page-section container">
+        <div id="destinationPageRoot" class="destination-page-root">
+            <p class="destination-page-loading">Loading…</p>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <p>&copy; 2026 BuniChitral. All rights reserved.</p>
+    </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore-compat.js"></script>
+    <script src="js/firebase-config.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/chitral-destinations-data.js"></script>
+    <script src="js/chitral-destination-detail.js"></script>
+</body>
+</html>
