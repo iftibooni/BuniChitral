@@ -8,7 +8,9 @@ window.BUNICHITRAL_DESTINATIONS = [
         name: 'Booni',
         summary:
             ' Booni, the heart of Upper Chitral, is a stunning alpine valley set against the Hindu Kush. Perched on a natural terrace, it blends lush orchards with snow-capped peaks. Qaqlasht Meadow hosts vibrant spring festivals, while nearby trails offer serene trekking experiences. Known for its apples and apricots, Booni is rich in natural abundance. It also serves as a gateway to Broghil Valley. With warm hospitality and peaceful surroundings, Booni offers travelers culture, adventure, and tranquility in one unforgettable destination ',
-        heroImage: 'Visuals/Booni/Photos/0.JPG'
+        heroImage: 'Visuals/Booni/Photos/0.JPG',
+        instagramFallback: 'https://www.instagram.com/bunichitral/reel/DTVOHtWDWTO/',
+        instagramVideoFallback: 'https://www.instagram.com/p/DTkb3nbDYPC/'
     },
     {
         id: 'kalash',

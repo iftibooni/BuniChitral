@@ -402,6 +402,13 @@ body {
     margin: 0 0 2rem;
 }
 
+.destination-instagram-subcap {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin: 1.25rem 0 0.75rem;
+}
+
 .destination-page-placeholder {
     color: #6b7280;
     font-size: 0.95rem;

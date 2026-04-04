@@ -40,7 +40,7 @@
         if (!url || typeof url !== 'string') {
             return null;
         }
-        const reel = url.match(/instagram\.com\/reel\/([^/?#]+)/i);
+        const reel = url.match(/instagram\.com\/[^/]+\/reel\/([^/?#]+)/i);
         if (reel) {
             return 'https://www.instagram.com/reel/' + reel[1] + '/embed';
         }
@@ -108,10 +108,9 @@
                     const images = pack.images && pack.images.length ? pack.images : [];
                     const videos = pack.videos && pack.videos.length ? pack.videos : [];
 
-                    let galleryHtml = '';
+                    let galleryHtml = '<h2 class="destination-gallery__label">Photos</h2>';
                     if (images.length) {
-                        galleryHtml =
-                            '<h2 class="destination-gallery__label">Photos</h2>' +
+                        galleryHtml +=
                             '<div class="destination-gallery__grid destination-gallery__grid--page">' +
                             images
                                 .map(function (src) {
@@ -129,22 +128,26 @@
                                 })
                                 .join('') +
                             '</div>';
-                    } else if (dest.instagramFallback) {
-                        galleryHtml =
-                            '<h2 class="destination-gallery__label">Photos</h2>' +
-                            renderInstagramBlock(dest.instagramFallback, dest.name + ' photos');
-                    } else {
-                        galleryHtml =
-                            '<h2 class="destination-gallery__label">Photos</h2>' +
+                    }
+                    if (dest.instagramFallback) {
+                        if (images.length) {
+                            galleryHtml +=
+                                '<p class="destination-instagram-subcap">Also on Instagram</p>';
+                        }
+                        galleryHtml += renderInstagramBlock(
+                            dest.instagramFallback,
+                            dest.name + ' on Instagram'
+                        );
+                    } else if (!images.length) {
+                        galleryHtml +=
                             '<p class="destination-page-placeholder">Add images to <code>Visuals/' +
                             escapeHtml(pack.folder || '') +
                             '/</code> and run <code>npm run build:visuals</code>, or set <code>instagramFallback</code> in <code>chitral-destinations-data.js</code>.</p>';
                     }
 
-                    let videosHtml = '';
+                    let videosHtml = '<h2 class="destination-video__label">Videos</h2>';
                     if (videos.length) {
-                        videosHtml =
-                            '<h2 class="destination-video__label">Videos</h2>' +
+                        videosHtml +=
                             '<div class="destination-page-videos">' +
                             videos
                                 .map(function (src) {
@@ -158,19 +161,26 @@
                                 })
                                 .join('') +
                             '</div>';
-                    } else {
-                        const vidUrl = dest.instagramVideoFallback || dest.instagramFallback;
-                        if (vidUrl) {
-                            videosHtml =
-                                '<h2 class="destination-video__label">Videos</h2>' +
-                                renderInstagramBlock(vidUrl, dest.name + ' video');
-                        } else {
-                            videosHtml =
-                                '<h2 class="destination-video__label">Videos</h2>' +
-                                '<p class="destination-page-placeholder">Add videos to <code>Visuals/' +
-                                escapeHtml(pack.folder || '') +
-                                '/</code> or set <code>instagramVideoFallback</code> in <code>chitral-destinations-data.js</code>.</p>';
+                    }
+                    if (dest.instagramVideoFallback) {
+                        if (videos.length) {
+                            videosHtml +=
+                                '<p class="destination-instagram-subcap">Also on Instagram</p>';
                         }
+                        videosHtml += renderInstagramBlock(
+                            dest.instagramVideoFallback,
+                            dest.name + ' video on Instagram'
+                        );
+                    } else if (!videos.length && dest.instagramFallback) {
+                        videosHtml += renderInstagramBlock(
+                            dest.instagramFallback,
+                            dest.name + ' video on Instagram'
+                        );
+                    } else if (!videos.length && !dest.instagramFallback) {
+                        videosHtml +=
+                            '<p class="destination-page-placeholder">Add videos to <code>Visuals/' +
+                            escapeHtml(pack.folder || '') +
+                            '/</code> or set <code>instagramVideoFallback</code> in <code>chitral-destinations-data.js</code>.</p>';
                     }
 
                     root.innerHTML =
